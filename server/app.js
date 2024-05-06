@@ -4,6 +4,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const { connectRabbitMQ } = require("./src/services/messageService");
 const { initializeSocket } = require("./src/services/socketService");
+const logger = require("./src/utils/logger");
 
 const app = express();
 const server = http.createServer(app);
@@ -16,12 +17,12 @@ app.get("/", (req, res) => {
 io = socketIo(server);
 
 server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  logger.info(`Server running on http://localhost:${PORT}`);
   // Initialize WebSocket
   initializeSocket(io);
 
   // connect to RabbitMQ
   connectRabbitMQ()
-    .then(() => console.log("Connected to RabbitMQ"))
+    .then(() => logger.info("Connected to RabbitMQ"))
     .catch((err) => console.error("RabbitMQ connection error:", err));
 });

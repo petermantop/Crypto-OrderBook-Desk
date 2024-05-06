@@ -1,4 +1,5 @@
 const amqp = require("amqplib");
+const logger = require("../utils/logger");
 
 async function connectAndConsume() {
   try {
@@ -10,12 +11,12 @@ async function connectAndConsume() {
     await channel.assertQueue("orders");
 
     // Log to console that the consumer is waiting for messages
-    console.log("Consumer is waiting for messages. To exit press CTRL+C");
+    logger.info("Consumer is waiting for messages. To exit press CTRL+C");
 
     // Start consuming messages from the 'orders' queue
     channel.consume("orders", (msg) => {
       if (msg !== null) {
-        console.log("Received:", msg.content.toString());
+        logger.info("Received:", msg.content.toString());
         // Acknowledge the message as processed
         channel.ack(msg);
       }

@@ -28,3 +28,8 @@
 /server/yarn-debug.log*
 /client/yarn-error.log*
 /server/yarn-error.log*
+
+# logger files
+/server/combined-dev.log 
+/server/combined.log 
+/server/error.log 
