@@ -27,9 +27,14 @@ winston.addColors({
 const logFormat = format.combine(
   format.colorize(),
   format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-  format.printf(
-    (info) => `[${info.level}] ${info.timestamp} : ${info.message}`
-  ),
+  format.splat(), // Enables string interpolation and multiple arguments
+  format.printf((info) => {
+    let message = info.message;
+    if (typeof info.message === "object") {
+      message = JSON.stringify(info.message, null, 4); // Pretty print objects
+    }
+    return `[${info.level}] ${info.timestamp} : ${message}`;
+  }),
   format.errors({ stack: true }) // To print stack trace for errors
 );
 

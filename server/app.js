@@ -2,8 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+
 const { connectRabbitMQ } = require("./src/services/messageService");
 const { initializeSocket } = require("./src/services/socketService");
+const connectAndConsume = require("./src/services/messageConsumer");
+
 const logger = require("./src/utils/logger");
 
 const app = express();
@@ -21,8 +24,15 @@ server.listen(PORT, () => {
   // Initialize WebSocket
   initializeSocket(io);
 
-  // connect to RabbitMQ
+  // connect to RabbitMQ for trading actions
   connectRabbitMQ()
-    .then(() => logger.info("Connected to RabbitMQ"))
-    .catch((err) => console.error("RabbitMQ connection error:", err));
+    .then(() =>
+      logger.info("Connected to RabbitMQ for sending order & trade actions")
+    )
+    .catch((err) => logger.error("RabbitMQ connection error:", err));
+
+  // connect to RabbitMQ for consuming trading actions
+  connectAndConsume()
+    .then(() => logger.info("Ready for consuming actions"))
+    .catch((err) => logger.error("RabbitMQ connection error:", err));
 });
