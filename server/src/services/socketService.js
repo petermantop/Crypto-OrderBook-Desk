@@ -10,6 +10,7 @@ function initializeSocket(io) {
     socket.on("counter clicked", () => {
       // increment the count
       count++;
+
       // emit to EVERYONE the updated count
       io.emit("counter updated", count);
     });

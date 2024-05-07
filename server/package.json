@@ -16,6 +16,7 @@
     "express": "^4.19.2",
     "json-server": "^1.0.0-alpha.23",
     "socket.io": "^2.3.0",
+    "uuid": "^9.0.1",
     "winston": "^3.13.0"
   },
   "devDependencies": {
