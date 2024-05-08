@@ -59,7 +59,7 @@ function startOrderGenerator() {
     }
 
     channel.sendToQueue("orders", Buffer.from(JSON.stringify(newOrder)));
-  }, 300); // Generate a new action every 0.3 seconds
+  }, 100); // Generate a new action every 0.3 seconds
 }
 
 function startTradingGenerator() {
@@ -77,7 +77,7 @@ function startTradingGenerator() {
     };
 
     channel.sendToQueue("trades", Buffer.from(JSON.stringify(newTrade)));
-  }, 500); // Generate a new action every 0.5 seconds
+  }, 200); // Generate a new action every 0.5 seconds
 }
 
 module.exports = { connectRabbitMQ };

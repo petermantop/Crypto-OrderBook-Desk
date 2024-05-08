@@ -10,17 +10,30 @@ import {
 } from "@mui/material";
 import { useSocket } from "../SocketContext";
 
-const IdentificationDialog = ({ open, onClose }) => {
-  const { socket } = useSocket();
+const IdentificationDialog = () => {
+  const {
+    identified,
+    setIdentified,
+    socket,
+    askForIdentification,
+    setAskForIdentification,
+  } = useSocket();
   const [name, setName] = useState("");
 
   const handleIdentification = () => {
-    socket.emit("identify", name);
-    onClose(); // Close the dialog after sending the identification
+    if (name.trim()) {
+      socket.emit("identify", name);
+      setIdentified(true);
+      setAskForIdentification(false);
+    }
+  };
+
+  const handleClose = () => {
+    setAskForIdentification(false);
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={askForIdentification} onClose={handleClose}>
       <DialogTitle>Identify Yourself</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -39,7 +52,7 @@ const IdentificationDialog = ({ open, onClose }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={handleIdentification}>OK</Button>
       </DialogActions>
     </Dialog>

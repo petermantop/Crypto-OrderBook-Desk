@@ -1,12 +1,7 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
-import io from "socket.io-client";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { updateOrderBookWithNewOrder, updateOrderBookWithTrade } from "./utils";
+
+import io from "socket.io-client";
 
 const SocketContext = createContext();
 
@@ -15,9 +10,9 @@ export const useSocket = () => useContext(SocketContext);
 export const SocketProvider = ({ children, SOCKET_URL, setChartData }) => {
   const [identified, setIdentified] = useState(false);
   const [socket, setSocket] = useState(null);
+  const [askForIdentification, setAskForIdentification] = useState(false);
 
   useEffect(() => {
-    // Initialize socket connection
     const newSocket = io(SOCKET_URL, { autoConnect: false });
     setSocket(newSocket);
 
@@ -37,15 +32,18 @@ export const SocketProvider = ({ children, SOCKET_URL, setChartData }) => {
       setIdentified(true);
     });
 
-    // Connect to the socket server
+    newSocket.on("identify_now", () => {
+      setAskForIdentification(true);
+    });
+
     newSocket.connect();
 
-    // Clean up on unmount
     return () => {
       newSocket.off("orderbook_new");
       newSocket.off("trade");
       newSocket.off("initial_map");
       newSocket.off("authenticated");
+      newSocket.off("identify_now");
       newSocket.disconnect();
     };
   }, [SOCKET_URL, setChartData]);
@@ -54,6 +52,8 @@ export const SocketProvider = ({ children, SOCKET_URL, setChartData }) => {
     identified,
     setIdentified,
     socket,
+    askForIdentification,
+    setAskForIdentification,
   };
 
   return (
