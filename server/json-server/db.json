@@ -25,124 +25,1405 @@
     {
       "id": "1",
       "pairId": 1,
-      "price": 50000,
-      "quantity": 0.5
+      "price": 99,
+      "quantity": 9,
+      "time": "2024-05-07T14:47:00.805Z"
     },
     {
       "id": "2",
       "pairId": 1,
-      "price": 49500,
-      "quantity": 0.2
+      "price": 99,
+      "quantity": 4,
+      "time": "2024-05-07T16:38:44.964Z"
     },
     {
       "id": "3",
-      "pairId": 2,
-      "price": 50584.87667606025,
-      "quantity": 23.58793478300043
+      "pairId": 1,
+      "price": 98,
+      "quantity": 9,
+      "time": "2024-05-07T17:11:32.255Z"
     },
     {
       "id": "4",
-      "pairId": 5,
-      "price": 50253.871805473354,
-      "quantity": 39.428796254850006
+      "pairId": 1,
+      "price": 98,
+      "quantity": 9,
+      "time": "2024-05-07T16:02:32.976Z"
     },
     {
       "id": "5",
-      "pairId": 3,
-      "price": 49317.25543334525,
-      "quantity": 93.71750664770732
+      "pairId": 1,
+      "price": 97,
+      "quantity": 6,
+      "time": "2024-05-07T16:16:57.586Z"
     },
     {
       "id": "6",
-      "pairId": 5,
-      "price": 50250.88495445412,
-      "quantity": 78.33169155650492
+      "pairId": 1,
+      "price": 97,
+      "quantity": 2,
+      "time": "2024-05-07T14:39:27.591Z"
     },
     {
       "id": "7",
-      "pairId": 3,
-      "price": 49464.60869548427,
-      "quantity": 13.011436920708297
+      "pairId": 1,
+      "price": 97,
+      "quantity": 8,
+      "time": "2024-05-07T15:24:32.547Z"
     },
     {
       "id": "8",
-      "pairId": 2,
-      "price": 49146.34015954178,
-      "quantity": 28.213763495123168
+      "pairId": 1,
+      "price": 96,
+      "quantity": 3,
+      "time": "2024-05-07T16:13:37.216Z"
     },
     {
       "id": "9",
-      "pairId": 2,
-      "price": 50988.4371439302,
-      "quantity": 14.026577530383811
+      "pairId": 1,
+      "price": 96,
+      "quantity": 4,
+      "time": "2024-05-07T16:35:06.184Z"
     },
     {
       "id": "10",
-      "pairId": 3,
-      "price": 50557.26788335523,
-      "quantity": 87.11128768325496
+      "pairId": 1,
+      "price": 96,
+      "quantity": 8,
+      "time": "2024-05-07T15:24:02.995Z"
+    },
+    {
+      "id": "11",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 1,
+      "time": "2024-05-07T14:43:03.094Z"
+    },
+    {
+      "id": "12",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 2,
+      "time": "2024-05-07T15:06:14.129Z"
+    },
+    {
+      "id": "13",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 7,
+      "time": "2024-05-07T17:16:03.403Z"
+    },
+    {
+      "id": "14",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 3,
+      "time": "2024-05-07T16:52:30.840Z"
+    },
+    {
+      "id": "15",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 9,
+      "time": "2024-05-07T15:35:15.503Z"
+    },
+    {
+      "id": "16",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 1,
+      "time": "2024-05-07T16:58:37.136Z"
+    },
+    {
+      "id": "17",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 7,
+      "time": "2024-05-07T16:54:50.202Z"
+    },
+    {
+      "id": "18",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 6,
+      "time": "2024-05-07T17:00:50.416Z"
+    },
+    {
+      "id": "19",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 4,
+      "time": "2024-05-07T17:11:40.135Z"
+    },
+    {
+      "id": "20",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 9,
+      "time": "2024-05-07T15:42:24.342Z"
+    },
+    {
+      "id": "21",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 4,
+      "time": "2024-05-07T17:00:02.153Z"
+    },
+    {
+      "id": "22",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 5,
+      "time": "2024-05-07T16:51:26.281Z"
+    },
+    {
+      "id": "23",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 10,
+      "time": "2024-05-07T15:55:24.988Z"
+    },
+    {
+      "id": "24",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 5,
+      "time": "2024-05-07T16:34:55.063Z"
+    },
+    {
+      "id": "25",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 3,
+      "time": "2024-05-07T16:11:42.544Z"
+    },
+    {
+      "id": "26",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 6,
+      "time": "2024-05-07T17:19:57.228Z"
+    },
+    {
+      "id": "27",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 1,
+      "time": "2024-05-07T16:11:53.696Z"
+    },
+    {
+      "id": "28",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 4,
+      "time": "2024-05-07T17:08:55.490Z"
+    },
+    {
+      "id": "29",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 6,
+      "time": "2024-05-07T15:08:06.458Z"
+    },
+    {
+      "id": "30",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 8,
+      "time": "2024-05-07T15:44:08.764Z"
+    },
+    {
+      "id": "31",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 2,
+      "time": "2024-05-07T16:41:43.609Z"
+    },
+    {
+      "id": "32",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 6,
+      "time": "2024-05-07T15:19:10.377Z"
+    },
+    {
+      "id": "33",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 8,
+      "time": "2024-05-07T16:28:07.570Z"
+    },
+    {
+      "id": "34",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 6,
+      "time": "2024-05-07T16:21:04.726Z"
+    },
+    {
+      "id": "35",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 8,
+      "time": "2024-05-07T16:20:37.353Z"
+    },
+    {
+      "id": "36",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 3,
+      "time": "2024-05-07T15:11:57.401Z"
+    },
+    {
+      "id": "37",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 5,
+      "time": "2024-05-07T15:46:30.166Z"
+    },
+    {
+      "id": "38",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 10,
+      "time": "2024-05-07T15:29:10.448Z"
+    },
+    {
+      "id": "39",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 2,
+      "time": "2024-05-07T16:23:03.244Z"
+    },
+    {
+      "id": "40",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 5,
+      "time": "2024-05-07T14:37:25.618Z"
+    },
+    {
+      "id": "41",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 7,
+      "time": "2024-05-07T16:14:08.476Z"
+    },
+    {
+      "id": "42",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 4,
+      "time": "2024-05-07T16:28:46.933Z"
+    },
+    {
+      "id": "43",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 6,
+      "time": "2024-05-07T15:30:03.273Z"
+    },
+    {
+      "id": "44",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 9,
+      "time": "2024-05-07T17:13:40.596Z"
+    },
+    {
+      "id": "45",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 3,
+      "time": "2024-05-07T16:38:29.549Z"
+    },
+    {
+      "id": "46",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 5,
+      "time": "2024-05-07T16:03:05.382Z"
+    },
+    {
+      "id": "47",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 2,
+      "time": "2024-05-07T15:15:23.110Z"
+    },
+    {
+      "id": "48",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 6,
+      "time": "2024-05-07T17:10:18.913Z"
+    },
+    {
+      "id": "49",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 1,
+      "time": "2024-05-07T14:38:41.283Z"
+    },
+    {
+      "id": "50",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 1,
+      "time": "2024-05-07T16:02:26.553Z"
+    },
+    {
+      "id": "51",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 6,
+      "time": "2024-05-07T16:40:35.395Z"
+    },
+    {
+      "id": "52",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 2,
+      "time": "2024-05-07T15:38:06.811Z"
+    },
+    {
+      "id": "53",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 7,
+      "time": "2024-05-07T15:57:47.503Z"
+    },
+    {
+      "id": "54",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 9,
+      "time": "2024-05-07T14:57:50.352Z"
+    },
+    {
+      "id": "55",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 2,
+      "time": "2024-05-07T14:42:22.999Z"
+    },
+    {
+      "id": "56",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 4,
+      "time": "2024-05-07T14:44:52.090Z"
+    },
+    {
+      "id": "57",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 10,
+      "time": "2024-05-07T16:21:56.181Z"
+    },
+    {
+      "id": "58",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 8,
+      "time": "2024-05-07T16:27:17.764Z"
+    },
+    {
+      "id": "59",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 4,
+      "time": "2024-05-07T14:50:35.076Z"
+    },
+    {
+      "id": "60",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 6,
+      "time": "2024-05-07T16:17:09.486Z"
+    },
+    {
+      "id": "61",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 9,
+      "time": "2024-05-07T15:35:19.009Z"
+    },
+    {
+      "id": "62",
+      "pairId": 1,
+      "price": 89,
+      "quantity": 1,
+      "time": "2024-05-07T15:34:53.416Z"
+    },
+    {
+      "id": "63",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 8,
+      "time": "2024-05-07T15:34:50.863Z"
+    },
+    {
+      "id": "64",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 6,
+      "time": "2024-05-07T15:29:23.265Z"
+    },
+    {
+      "id": "65",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 1,
+      "time": "2024-05-07T16:13:16.095Z"
+    },
+    {
+      "id": "66",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 2,
+      "time": "2024-05-07T14:53:30.653Z"
+    },
+    {
+      "id": "67",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 10,
+      "time": "2024-05-07T16:18:37.326Z"
+    },
+    {
+      "id": "68",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 5,
+      "time": "2024-05-07T16:55:51.325Z"
+    },
+    {
+      "id": "69",
+      "pairId": 1,
+      "price": 90,
+      "quantity": 2,
+      "time": "2024-05-07T16:05:36.989Z"
+    },
+    {
+      "id": "70",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 2,
+      "time": "2024-05-07T14:55:46.021Z"
+    },
+    {
+      "id": "71",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 10,
+      "time": "2024-05-07T16:17:28.263Z"
+    },
+    {
+      "id": "72",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 3,
+      "time": "2024-05-07T14:34:43.386Z"
+    },
+    {
+      "id": "73",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 4,
+      "time": "2024-05-07T14:51:20.131Z"
+    },
+    {
+      "id": "74",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 10,
+      "time": "2024-05-07T15:26:06.832Z"
+    },
+    {
+      "id": "75",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 2,
+      "time": "2024-05-07T14:53:08.682Z"
+    },
+    {
+      "id": "76",
+      "pairId": 1,
+      "price": 91,
+      "quantity": 7,
+      "time": "2024-05-07T14:51:19.340Z"
+    },
+    {
+      "id": "77",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 4,
+      "time": "2024-05-07T16:14:18.987Z"
+    },
+    {
+      "id": "78",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 9,
+      "time": "2024-05-07T15:35:39.488Z"
+    },
+    {
+      "id": "79",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 8,
+      "time": "2024-05-07T16:31:53.652Z"
+    },
+    {
+      "id": "80",
+      "pairId": 1,
+      "price": 92,
+      "quantity": 2,
+      "time": "2024-05-07T16:13:05.293Z"
+    },
+    {
+      "id": "81",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 2,
+      "time": "2024-05-07T15:45:13.758Z"
+    },
+    {
+      "id": "82",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 6,
+      "time": "2024-05-07T15:43:38.560Z"
+    },
+    {
+      "id": "83",
+      "pairId": 1,
+      "price": 93,
+      "quantity": 8,
+      "time": "2024-05-07T17:17:39.055Z"
+    },
+    {
+      "id": "84",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 2,
+      "time": "2024-05-07T16:26:49.544Z"
+    },
+    {
+      "id": "85",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 7,
+      "time": "2024-05-07T16:03:23.969Z"
+    },
+    {
+      "id": "86",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 5,
+      "time": "2024-05-07T17:09:28.853Z"
+    },
+    {
+      "id": "87",
+      "pairId": 1,
+      "price": 94,
+      "quantity": 6,
+      "time": "2024-05-07T16:55:21.318Z"
+    },
+    {
+      "id": "88",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 8,
+      "time": "2024-05-07T15:47:29.310Z"
+    },
+    {
+      "id": "89",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 9,
+      "time": "2024-05-07T15:41:40.523Z"
+    },
+    {
+      "id": "90",
+      "pairId": 1,
+      "price": 95,
+      "quantity": 2,
+      "time": "2024-05-07T15:34:02.106Z"
+    },
+    {
+      "id": "91",
+      "pairId": 1,
+      "price": 96,
+      "quantity": 1,
+      "time": "2024-05-07T14:55:53.792Z"
+    },
+    {
+      "id": "92",
+      "pairId": 1,
+      "price": 96,
+      "quantity": 3,
+      "time": "2024-05-07T14:42:47.306Z"
+    },
+    {
+      "id": "93",
+      "pairId": 1,
+      "price": 96,
+      "quantity": 9,
+      "time": "2024-05-07T14:56:27.518Z"
+    },
+    {
+      "id": "94",
+      "pairId": 1,
+      "price": 97,
+      "quantity": 7,
+      "time": "2024-05-07T15:06:44.028Z"
+    },
+    {
+      "id": "95",
+      "pairId": 1,
+      "price": 97,
+      "quantity": 6,
+      "time": "2024-05-07T16:59:24.079Z"
+    },
+    {
+      "id": "96",
+      "pairId": 1,
+      "price": 97,
+      "quantity": 3,
+      "time": "2024-05-07T16:31:56.012Z"
+    },
+    {
+      "id": "97",
+      "pairId": 1,
+      "price": 98,
+      "quantity": 2,
+      "time": "2024-05-07T15:26:55.435Z"
+    },
+    {
+      "id": "98",
+      "pairId": 1,
+      "price": 98,
+      "quantity": 2,
+      "time": "2024-05-07T17:07:46.219Z"
+    },
+    {
+      "id": "99",
+      "pairId": 1,
+      "price": 99,
+      "quantity": 5,
+      "time": "2024-05-07T16:03:49.889Z"
+    },
+    {
+      "id": "100",
+      "pairId": 1,
+      "price": 99,
+      "quantity": 3,
+      "time": "2024-05-07T14:45:35.048Z"
     }
   ],
   "asks": [
     {
       "id": "1",
       "pairId": 1,
-      "price": 51478.8711692652,
-      "quantity": 30.282995106662234
+      "price": 101,
+      "quantity": 6,
+      "time": "2024-05-07T14:41:05.066Z"
     },
     {
       "id": "2",
       "pairId": 1,
-      "price": 51500,
-      "quantity": 0.4
+      "price": 101,
+      "quantity": 6,
+      "time": "2024-05-07T17:16:01.780Z"
     },
     {
       "id": "3",
-      "pairId": 4,
-      "price": 50138.27227301466,
-      "quantity": 55.92322764517572
+      "pairId": 1,
+      "price": 102,
+      "quantity": 2,
+      "time": "2024-05-07T16:17:17.542Z"
     },
     {
       "id": "4",
-      "pairId": 2,
-      "price": 50288.588982122536,
-      "quantity": 22.307101225642878
+      "pairId": 1,
+      "price": 102,
+      "quantity": 1,
+      "time": "2024-05-07T16:19:27.598Z"
     },
     {
       "id": "5",
-      "pairId": 2,
-      "price": 50726.37928906762,
-      "quantity": 70.62765058335665
+      "pairId": 1,
+      "price": 102,
+      "quantity": 8,
+      "time": "2024-05-07T15:22:42.954Z"
     },
     {
       "id": "6",
-      "pairId": 3,
-      "price": 51549.42670011776,
-      "quantity": 44.52295465210303
+      "pairId": 1,
+      "price": 103,
+      "quantity": 3,
+      "time": "2024-05-07T15:16:26.196Z"
     },
     {
       "id": "7",
-      "pairId": 3,
-      "price": 51465.0108058998,
-      "quantity": 94.21465153947854
+      "pairId": 1,
+      "price": 103,
+      "quantity": 8,
+      "time": "2024-05-07T15:56:17.145Z"
     },
     {
       "id": "8",
-      "pairId": 5,
-      "price": 50124.611314481896,
-      "quantity": 71.64270112135208
+      "pairId": 1,
+      "price": 104,
+      "quantity": 2,
+      "time": "2024-05-07T16:18:39.646Z"
     },
     {
       "id": "9",
-      "pairId": 3,
-      "price": 50176.57660485544,
-      "quantity": 25.59225821952942
+      "pairId": 1,
+      "price": 104,
+      "quantity": 3,
+      "time": "2024-05-07T15:43:58.328Z"
     },
     {
       "id": "10",
-      "pairId": 2,
-      "price": 50962.73401954955,
-      "quantity": 34.45280074957986
+      "pairId": 1,
+      "price": 104,
+      "quantity": 5,
+      "time": "2024-05-07T15:40:12.732Z"
+    },
+    {
+      "id": "11",
+      "pairId": 1,
+      "price": 105,
+      "quantity": 7,
+      "time": "2024-05-07T15:01:36.647Z"
+    },
+    {
+      "id": "12",
+      "pairId": 1,
+      "price": 105,
+      "quantity": 9,
+      "time": "2024-05-07T17:21:54.432Z"
+    },
+    {
+      "id": "13",
+      "pairId": 1,
+      "price": 105,
+      "quantity": 8,
+      "time": "2024-05-07T16:44:50.734Z"
+    },
+    {
+      "id": "14",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 10,
+      "time": "2024-05-07T15:52:50.408Z"
+    },
+    {
+      "id": "15",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 2,
+      "time": "2024-05-07T14:36:09.407Z"
+    },
+    {
+      "id": "16",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 6,
+      "time": "2024-05-07T15:57:20.622Z"
+    },
+    {
+      "id": "17",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 8,
+      "time": "2024-05-07T17:16:00.667Z"
+    },
+    {
+      "id": "18",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 5,
+      "time": "2024-05-07T15:17:41.583Z"
+    },
+    {
+      "id": "19",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 6,
+      "time": "2024-05-07T16:16:45.157Z"
+    },
+    {
+      "id": "20",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 1,
+      "time": "2024-05-07T16:52:53.638Z"
+    },
+    {
+      "id": "21",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 2,
+      "time": "2024-05-07T14:39:01.376Z"
+    },
+    {
+      "id": "22",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 3,
+      "time": "2024-05-07T14:48:13.356Z"
+    },
+    {
+      "id": "23",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 5,
+      "time": "2024-05-07T16:18:58.836Z"
+    },
+    {
+      "id": "24",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 6,
+      "time": "2024-05-07T15:56:12.778Z"
+    },
+    {
+      "id": "25",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 3,
+      "time": "2024-05-07T15:27:50.169Z"
+    },
+    {
+      "id": "26",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 4,
+      "time": "2024-05-07T16:46:44.649Z"
+    },
+    {
+      "id": "27",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 9,
+      "time": "2024-05-07T16:09:10.887Z"
+    },
+    {
+      "id": "28",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 10,
+      "time": "2024-05-07T16:08:25.812Z"
+    },
+    {
+      "id": "29",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 1,
+      "time": "2024-05-07T16:02:26.626Z"
+    },
+    {
+      "id": "30",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 5,
+      "time": "2024-05-07T14:57:25.404Z"
+    },
+    {
+      "id": "31",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 5,
+      "time": "2024-05-07T17:10:05.607Z"
+    },
+    {
+      "id": "32",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 10,
+      "time": "2024-05-07T15:34:20.096Z"
+    },
+    {
+      "id": "33",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 1,
+      "time": "2024-05-07T16:42:09.289Z"
+    },
+    {
+      "id": "34",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 5,
+      "time": "2024-05-07T15:29:44.728Z"
+    },
+    {
+      "id": "35",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 10,
+      "time": "2024-05-07T16:07:19.203Z"
+    },
+    {
+      "id": "36",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 1,
+      "time": "2024-05-07T15:35:56.693Z"
+    },
+    {
+      "id": "37",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 2,
+      "time": "2024-05-07T16:02:19.452Z"
+    },
+    {
+      "id": "38",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 2,
+      "time": "2024-05-07T15:13:22.582Z"
+    },
+    {
+      "id": "39",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 9,
+      "time": "2024-05-07T14:53:12.514Z"
+    },
+    {
+      "id": "40",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 2,
+      "time": "2024-05-07T15:04:24.154Z"
+    },
+    {
+      "id": "41",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 8,
+      "time": "2024-05-07T16:07:15.941Z"
+    },
+    {
+      "id": "42",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 2,
+      "time": "2024-05-07T16:06:41.995Z"
+    },
+    {
+      "id": "43",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 1,
+      "time": "2024-05-07T15:05:19.181Z"
+    },
+    {
+      "id": "44",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 1,
+      "time": "2024-05-07T15:50:58.136Z"
+    },
+    {
+      "id": "45",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 7,
+      "time": "2024-05-07T15:36:19.944Z"
+    },
+    {
+      "id": "46",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 8,
+      "time": "2024-05-07T14:40:54.226Z"
+    },
+    {
+      "id": "47",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T15:36:10.492Z"
+    },
+    {
+      "id": "48",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T17:19:26.085Z"
+    },
+    {
+      "id": "49",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T16:11:20.890Z"
+    },
+    {
+      "id": "50",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T15:58:45.616Z"
+    },
+    {
+      "id": "51",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T15:45:19.549Z"
+    },
+    {
+      "id": "52",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 6,
+      "time": "2024-05-07T16:32:23.550Z"
+    },
+    {
+      "id": "53",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 9,
+      "time": "2024-05-07T17:16:02.050Z"
+    },
+    {
+      "id": "54",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 8,
+      "time": "2024-05-07T15:22:09.145Z"
+    },
+    {
+      "id": "55",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 2,
+      "time": "2024-05-07T16:39:18.366Z"
+    },
+    {
+      "id": "56",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 10,
+      "time": "2024-05-07T16:38:25.831Z"
+    },
+    {
+      "id": "57",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 5,
+      "time": "2024-05-07T16:00:32.796Z"
+    },
+    {
+      "id": "58",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T16:25:37.936Z"
+    },
+    {
+      "id": "59",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 2,
+      "time": "2024-05-07T17:00:17.054Z"
+    },
+    {
+      "id": "60",
+      "pairId": 1,
+      "price": 111,
+      "quantity": 4,
+      "time": "2024-05-07T15:14:03.755Z"
+    },
+    {
+      "id": "61",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 10,
+      "time": "2024-05-07T15:32:38.322Z"
+    },
+    {
+      "id": "62",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 10,
+      "time": "2024-05-07T16:20:50.412Z"
+    },
+    {
+      "id": "63",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 8,
+      "time": "2024-05-07T16:06:44.856Z"
+    },
+    {
+      "id": "64",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 2,
+      "time": "2024-05-07T14:58:27.871Z"
+    },
+    {
+      "id": "65",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 7,
+      "time": "2024-05-07T16:34:15.875Z"
+    },
+    {
+      "id": "66",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 6,
+      "time": "2024-05-07T15:46:24.077Z"
+    },
+    {
+      "id": "67",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 1,
+      "time": "2024-05-07T14:52:19.468Z"
+    },
+    {
+      "id": "68",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 10,
+      "time": "2024-05-07T16:45:27.356Z"
+    },
+    {
+      "id": "69",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 5,
+      "time": "2024-05-07T15:21:17.996Z"
+    },
+    {
+      "id": "70",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 1,
+      "time": "2024-05-07T15:14:49.790Z"
+    },
+    {
+      "id": "71",
+      "pairId": 1,
+      "price": 110,
+      "quantity": 8,
+      "time": "2024-05-07T15:01:39.977Z"
+    },
+    {
+      "id": "72",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 3,
+      "time": "2024-05-07T15:12:49.880Z"
+    },
+    {
+      "id": "73",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 8,
+      "time": "2024-05-07T16:15:28.109Z"
+    },
+    {
+      "id": "74",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 5,
+      "time": "2024-05-07T16:06:14.908Z"
+    },
+    {
+      "id": "75",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 5,
+      "time": "2024-05-07T14:44:23.880Z"
+    },
+    {
+      "id": "76",
+      "pairId": 1,
+      "price": 109,
+      "quantity": 9,
+      "time": "2024-05-07T15:02:05.812Z"
+    },
+    {
+      "id": "77",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 9,
+      "time": "2024-05-07T15:29:47.321Z"
+    },
+    {
+      "id": "78",
+      "pairId": 1,
+      "price": 108,
+      "quantity": 7,
+      "time": "2024-05-07T16:29:28.217Z"
+    },
+    {
+      "id": "79",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 2,
+      "time": "2024-05-07T15:45:23.614Z"
+    },
+    {
+      "id": "80",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 5,
+      "time": "2024-05-07T15:15:49.571Z"
+    },
+    {
+      "id": "81",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 6,
+      "time": "2024-05-07T15:13:57.222Z"
+    },
+    {
+      "id": "82",
+      "pairId": 1,
+      "price": 107,
+      "quantity": 7,
+      "time": "2024-05-07T15:59:50.036Z"
+    },
+    {
+      "id": "83",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 7,
+      "time": "2024-05-07T14:46:46.246Z"
+    },
+    {
+      "id": "84",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 7,
+      "time": "2024-05-07T14:43:00.447Z"
+    },
+    {
+      "id": "85",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 2,
+      "time": "2024-05-07T16:16:09.441Z"
+    },
+    {
+      "id": "86",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 4,
+      "time": "2024-05-07T14:41:33.528Z"
+    },
+    {
+      "id": "87",
+      "pairId": 1,
+      "price": 106,
+      "quantity": 8,
+      "time": "2024-05-07T16:28:52.401Z"
+    },
+    {
+      "id": "88",
+      "pairId": 1,
+      "price": 105,
+      "quantity": 10,
+      "time": "2024-05-07T15:21:12.315Z"
+    },
+    {
+      "id": "89",
+      "pairId": 1,
+
+      "price": 105,
+      "quantity": 3,
+      "time": "2024-05-07T16:15:26.786Z"
+    },
+    {
+      "id": "90",
+      "pairId": 1,
+      "price": 104,
+      "quantity": 8,
+      "time": "2024-05-07T15:26:33.151Z"
+    },
+    {
+      "id": "91",
+      "pairId": 1,
+      "price": 104,
+      "quantity": 3,
+      "time": "2024-05-07T14:54:14.691Z"
+    },
+    {
+      "id": "92",
+      "pairId": 1,
+      "price": 104,
+      "quantity": 9,
+      "time": "2024-05-07T16:28:10.022Z"
+    },
+    {
+      "id": "93",
+      "pairId": 1,
+      "price": 104,
+      "quantity": 7,
+      "time": "2024-05-07T15:15:33.933Z"
+    },
+    {
+      "id": "94",
+      "pairId": 1,
+      "price": 103,
+      "quantity": 9,
+      "time": "2024-05-07T16:59:51.797Z"
+    },
+    {
+      "id": "95",
+      "pairId": 1,
+      "price": 103,
+      "quantity": 8,
+      "time": "2024-05-07T14:58:25.260Z"
+    },
+    {
+      "id": "96",
+      "pairId": 1,
+      "price": 103,
+      "quantity": 9,
+      "time": "2024-05-07T17:00:38.013Z"
+    },
+    {
+      "id": "97",
+      "pairId": 1,
+      "price": 102,
+      "quantity": 8,
+      "time": "2024-05-07T16:32:22.277Z"
+    },
+    {
+      "id": "98",
+      "pairId": 1,
+      "price": 102,
+      "quantity": 8,
+      "time": "2024-05-07T14:47:16.229Z"
+    },
+    {
+      "id": "99",
+      "pairId": 1,
+      "price": 101,
+      "quantity": 8,
+      "time": "2024-05-07T17:01:23.030Z"
+    },
+    {
+      "id": "100",
+      "pairId": 1,
+      "price": 101,
+      "quantity": 1,
+      "time": "2024-05-07T15:11:38.432Z"
     }
   ],
   "trades": [

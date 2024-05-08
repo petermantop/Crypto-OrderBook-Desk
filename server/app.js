@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const http = require("http");
-const socketIo = require("socket.io");
 
 const { connectRabbitMQ } = require("./src/services/messageService");
 const { initializeSocket } = require("./src/services/socketService");
@@ -17,12 +16,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-io = socketIo(server);
-
 server.listen(PORT, () => {
   logger.info(`Server running on http://localhost:${PORT}`);
   // Initialize WebSocket
-  initializeSocket(io);
+  initializeSocket(server);
 
   // connect to RabbitMQ for trading actions
   connectRabbitMQ()

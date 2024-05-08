@@ -9,4 +9,16 @@ const ORDER_ACTION_TYPES = {
   CANCEL: "cancel",
 };
 
-module.exports = { ORDER_TYPES, ORDER_ACTION_TYPES };
+const CRYPTO_BASE_INFO = [
+  {
+    name: "BTC-USD",
+    price: 100,
+    range: 10,
+  },
+  {},
+  {},
+  {},
+  {},
+];
+
+module.exports = { ORDER_TYPES, ORDER_ACTION_TYPES, CRYPTO_BASE_INFO };

@@ -1,6 +1,9 @@
 const amqp = require("amqplib");
 const { v4: uuid } = require("uuid");
+
 const { ORDER_TYPES, ORDER_ACTION_TYPES } = require("../../const");
+const { generatePriceQuantity } = require("../utils/dataProcess");
+
 let channel = null;
 
 async function connectRabbitMQ() {
@@ -8,7 +11,7 @@ async function connectRabbitMQ() {
   channel = await connection.createChannel();
 
   await channel.assertQueue("orders");
-  await channel.assertQueue("orders");
+  await channel.assertQueue("trades");
 
   startOrderGenerator();
   startTradingGenerator();
@@ -33,17 +36,20 @@ function startOrderGenerator() {
     // Send a new order
     const newOrder = {
       id: uuid(),
+      pairId: Math.ceil(Math.random() * 1),
       type: order,
       actionType: action,
-      pairId: Math.ceil(Math.random() * 5),
-      price:
-        Math.random() * 2000 + (order === ORDER_TYPES.BIDS ? 49000 : 50000),
-      quantity: Math.random() * 100,
+      timeStamp: new Date(),
     };
 
+    if (newOrder.actionType === ORDER_ACTION_TYPES.NEW) {
+      item = generatePriceQuantity(newOrder.pairId, newOrder.type);
+      newOrder.price = item.price;
+      newOrder.quantity = item.quantity;
+    }
     // give existing id for update or cancel
-    if (action !== ORDER_ACTION_TYPES.NEW) {
-      newOrder.id = Math.ceil(Math.random() * 10);
+    else {
+      newOrder.id = Math.ceil(Math.random() * 100);
     }
 
     if (action === ORDER_ACTION_TYPES.CANCEL) {
@@ -53,23 +59,25 @@ function startOrderGenerator() {
     }
 
     channel.sendToQueue("orders", Buffer.from(JSON.stringify(newOrder)));
-  }, 1000); // Generate a new action every 1 seconds
+  }, 100); // Generate a new action every 0.3 seconds
 }
 
 function startTradingGenerator() {
   // Random trade generator setup
-  const intervalId = setInterval(() => {
+  setInterval(() => {
+    const pairId = Math.ceil(Math.random() * 1);
+    const { price, quantity } = generatePriceQuantity(pairId);
     // Send a new trade
     const newTrade = {
       id: uuid(),
-      pairId: Math.ceil(Math.random() * 5),
-      price: Math.random() * 2000 + 50000,
-      quantity: Math.random() * 100,
+      pairId,
+      price,
+      quantity,
       timeStamp: new Date(),
     };
 
     channel.sendToQueue("trades", Buffer.from(JSON.stringify(newTrade)));
-  }, 1000); // Generate a new action every 1 seconds
+  }, 200); // Generate a new action every 0.5 seconds
 }
 
 module.exports = { connectRabbitMQ };

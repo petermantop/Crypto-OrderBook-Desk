@@ -1,17 +1,27 @@
 const axios = require("axios");
 const logger = require("../utils/logger");
+const { broadcast } = require("./socketService");
+
 const { TRADING_PLATFORM_URL } = require("../../config");
 const { ORDER_TYPES, ORDER_ACTION_TYPES } = require("../../const");
 
 // To enable sync with json-server change SEND_REQUEST to true
-const shouldSendRequest = process.env.SEND_REQUEST !== "false";
+const shouldSendRequestToMock = process.env.SEND_REQUEST_MOCK !== "false";
+
+if (!shouldSendRequestToMock) {
+  logger.info("Request sending is disabled.");
+}
 
 async function processOrderMessage(message) {
   // Implement your logic to process the message here
-  logger.info("Processing order message: %o", message);
+  logger.info(
+    `New order message accepted: TYPE: ${message.actionType} --- ID: ${message.id}`
+  );
 
-  if (!shouldSendRequest) {
-    logger.info("Request sending is disabled.");
+  if (message.actionType === ORDER_ACTION_TYPES.NEW)
+    broadcast("orderbook_new", message);
+
+  if (!shouldSendRequestToMock) {
     return;
   }
 
@@ -63,10 +73,10 @@ async function processOrderMessage(message) {
 
 async function processTradeMessage(message) {
   // Implement your logic to process the message here
-  logger.info("Processing trade message: %o", message);
+  logger.info(`New trading message accepted: ${message.id}`);
+  broadcast("trade", message);
 
-  if (!shouldSendRequest) {
-    logger.info("Request sending is disabled.");
+  if (!shouldSendRequestToMock) {
     return;
   }
 

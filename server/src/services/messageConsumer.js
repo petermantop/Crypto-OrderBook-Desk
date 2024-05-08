@@ -23,7 +23,6 @@ async function connectAndConsume() {
       if (msg !== null) {
         try {
           const message = JSON.parse(msg.content.toString());
-          logger.info("Received order message: %o", message);
 
           processOrderMessage(message);
           channel.ack(msg);
@@ -40,7 +39,6 @@ async function connectAndConsume() {
       if (msg !== null) {
         try {
           const message = JSON.parse(msg.content.toString());
-          logger.info("Received trade message: %o", message);
 
           processTradeMessage(message);
           channel.ack(msg);
