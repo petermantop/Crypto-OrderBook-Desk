@@ -1,149 +1,104 @@
 import React from "react";
-import { useTable } from "react-table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Grid,
+} from "@mui/material";
 
 const calculateTotals = (data) => {
   let runningTotal = 0;
   return data.map((item) => {
-    runningTotal = item.quantity * item.price;
+    runningTotal += item.quantity * item.price;
     return { ...item, total: runningTotal };
   });
 };
 
 const OrderBook = ({ asks, bids }) => {
   bids.sort((a, b) => b.price - a.price);
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Price",
-        accessor: "price",
-        width: "25%",
-        color: "#E57373",
-      },
-      {
-        Header: "Quantity",
-        accessor: "quantity",
-        width: "25%",
-      },
-      {
-        Header: "Total",
-        accessor: "total",
-        width: "30%",
-      },
-      {
-        Header: "Count",
-        accessor: "count",
-        width: "20%",
-      },
-    ],
-    []
-  );
 
-  // Define bidColumns with the desired order for the bid table
-  const bidColumns = React.useMemo(
-    () => [
-      {
-        Header: "Count",
-        accessor: "count",
-        width: "20%",
-      },
-      {
-        Header: "Total",
-        accessor: "total",
-        width: "30%",
-      },
-      {
-        Header: "Quantity",
-        accessor: "quantity",
-        width: "25%",
-      },
-      {
-        Header: "Price",
-        accessor: "price",
-        width: "25%",
-        color: "#4E9A51",
-      },
-    ],
-    []
-  );
+  const textColors = {
+    bids: "#808000", // Olive color for bids
+    asks: "#FF7F50", // Coral color for asks
+  };
 
-  const askData = React.useMemo(() => calculateTotals(asks), [asks]);
-  const bidData = React.useMemo(() => calculateTotals(bids), [bids]);
+  const askColumns = [
+    { label: "Price", accessor: "price" },
+    { label: "Quantity", accessor: "quantity" },
+    { label: "Total", accessor: "total" },
+  ];
 
-  const askTableInstance = useTable({ columns, data: askData });
-  const bidTableInstance = useTable({ columns: bidColumns, data: bidData });
+  const bidColumns = [
+    { label: "Total", accessor: "total" },
+    { label: "Quantity", accessor: "quantity" },
+    { label: "Price", accessor: "price" },
+  ];
 
-  const renderTable = (tableInstance, tableType) => (
-    <table
-      {...tableInstance.getTableProps()}
-      className="table table-hover table-sm"
-      style={{ textAlign: "center" }}
-    >
-      <thead>
-        {tableInstance.headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps({
-                  style: {
-                    width: column.width,
-                    color: column.color,
-                  },
-                })}
+  const askData = calculateTotals(asks);
+  const bidData = calculateTotals(bids);
+
+  const renderTable = (data, columns, tableType) => (
+    <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            {columns.map((column) => (
+              <TableCell
+                key={column.accessor}
+                sx={{
+                  textAlign: "center",
+                  // Apply sophisticated color to the price column
+                  ...(column.accessor === "price"
+                    ? { color: textColors[tableType] }
+                    : {}),
+                }}
               >
-                {column.render("Header")}
-              </th>
+                {column.label}
+              </TableCell>
             ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...tableInstance.getTableBodyProps()}>
-        {tableInstance.rows.map((row) => {
-          tableInstance.prepareRow(row);
-          return (
-            <tr
-              {...row.getRowProps()}
-              className={`${
-                tableType === "asks" ? "text-danger" : "text-success"
-              }`}
-            >
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps({
-                      style: {
-                        width: cell.column.width,
-                        color: cell.column.color,
-                      },
-                    })}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row, rowIndex) => (
+            <TableRow key={rowIndex}>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.accessor}
+                  sx={{
+                    textAlign: "center",
+                    // Apply sophisticated color to the price column
+                    ...(column.accessor === "price"
+                      ? { color: textColors[tableType] }
+                      : {}),
+                  }}
+                >
+                  {row[column.accessor]}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 
   return (
-    <div className="container mt-4">
-      <style>
-        {`
-          .table th, .table td {
-            font-family: 'Arial', sans-serif;
-            font-size: 0.75rem; // Adjust font size to small (12px equivalent)
-            padding: 0.25rem; // Reduce padding to make rows more compact
-            border: 0 !important; // Remove borders from all table cells
-          }
-        `}
-      </style>
-      <div className="row justify-content-center">
-        <div className="col-md-4">{renderTable(bidTableInstance, "bids")}</div>
-        <div className="col-md-4">{renderTable(askTableInstance, "asks")}</div>
-      </div>
-    </div>
+    <Grid
+      container
+      spacing={2}
+      sx={{ padding: "16px", justifyContent: "center" }}
+    >
+      <Grid item xs={12} sm={10} md={6} lg={4} sx={{ padding: "8px" }}>
+        {renderTable(bidData, bidColumns, "bids")}
+      </Grid>
+      <Grid item xs={12} sm={10} md={6} lg={4} sx={{ padding: "8px" }}>
+        {renderTable(askData, askColumns, "asks")}
+      </Grid>
+    </Grid>
   );
 };
 

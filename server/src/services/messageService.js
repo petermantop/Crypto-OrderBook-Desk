@@ -36,7 +36,7 @@ function startOrderGenerator() {
     // Send a new order
     const newOrder = {
       id: uuid(),
-      pairId: Math.ceil(Math.random() * 1),
+      pairId: Math.ceil(Math.random() * 2),
       type: order,
       actionType: action,
       timeStamp: new Date(),
@@ -59,13 +59,13 @@ function startOrderGenerator() {
     }
 
     channel.sendToQueue("orders", Buffer.from(JSON.stringify(newOrder)));
-  }, 100); // Generate a new action every 0.3 seconds
+  }, 300); // Generate a new action every 0.3 seconds
 }
 
 function startTradingGenerator() {
   // Random trade generator setup
   setInterval(() => {
-    const pairId = Math.ceil(Math.random() * 1);
+    const pairId = Math.ceil(Math.random() * 2);
     const { price, quantity } = generatePriceQuantity(pairId);
     // Send a new trade
     const newTrade = {
@@ -77,7 +77,7 @@ function startTradingGenerator() {
     };
 
     channel.sendToQueue("trades", Buffer.from(JSON.stringify(newTrade)));
-  }, 200); // Generate a new action every 0.5 seconds
+  }, 500); // Generate a new action every 0.5 seconds
 }
 
 module.exports = { connectRabbitMQ };

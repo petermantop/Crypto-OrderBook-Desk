@@ -15,7 +15,11 @@ const CRYPTO_BASE_INFO = [
     price: 100,
     range: 10,
   },
-  {},
+  {
+    name: "ETHER-USD",
+    price: 100,
+    range: 10,
+  },
   {},
   {},
   {},

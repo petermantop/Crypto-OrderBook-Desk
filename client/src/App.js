@@ -1,76 +1,77 @@
-import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
+import React, { useState } from "react";
+import {
+  Container,
+  useTheme,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogActions,
+  Button,
+  Paper,
+} from "@mui/material";
+import { SocketProvider, useSocket } from "./SocketContext"; // Updated import for SocketContext
+
 import OrderBookChart from "./OrderBookCharts";
 import OrderBookTable from "./OrderBookTable";
 
-import { asks, bids } from "./data/orderBook";
-import { updateOrderBookWithNewOrder, updateOrderBookWithTrade } from "./utils";
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || "ws://localhost:4000";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+const IdentificationDialog = () => {
+  const { identified, setIdentified, socket } = useSocket();
+  const [name, setName] = useState("");
 
-import "./App.css";
+  const handleIdentification = () => {
+    socket.emit("identify", name);
+  };
 
-// storing socket connection in this global variable
-let socket = null;
+  return (
+    <Dialog open={!identified} onClose={() => {}}>
+      <DialogTitle>Identify Yourself</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          To subscribe to crypto pairs, please enter your name.
+        </DialogContentText>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Name"
+          type="text"
+          fullWidth
+          variant="outlined"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setIdentified(true)}>Cancel</Button>
+        <Button onClick={handleIdentification}>OK</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
-function App() {
-  const [chartData, setchartData] = useState({
+const App = () => {
+  const theme = useTheme();
+  const [chartData, setChartData] = useState({
     market: "BTC/USDT",
     bids: [],
     asks: [],
   });
 
-  // after component mount...
-  useEffect(() => {
-    console.log("Connecting to socket...");
-    socket = io("ws://localhost:4000");
-
-    const handleNewOrderbook = (message) => {
-      setchartData((chartData) => {
-        const data = updateOrderBookWithNewOrder(chartData, message);
-        return data;
-      });
-    };
-
-    const handleNewTrade = (message) => {
-      setchartData((chartData) => {
-        const data = updateOrderBookWithTrade(chartData, message);
-        return data;
-      });
-    };
-
-    const initMap = ({ bids, asks }) => {
-      setchartData((data) => ({ ...data, bids, asks }));
-    };
-
-    socket.on("orderbook_new", handleNewOrderbook);
-    socket.on("trade", handleNewTrade);
-    socket.on("initial_map", initMap);
-
-    // Clean up on component unmount
-    return () => {
-      socket.off("orderbook_new", handleNewOrderbook);
-      socket.off("trade", handleNewTrade);
-      socket.close();
-      console.log("Disconnected socket and cleanup done!");
-    };
-  }, []); // Ensure this only runs once
-
   return (
-    <div>
-      <div className="container">
-        <div className="text-center">
-          <OrderBookChart
-            width={1024}
-            height={400}
-            margin={{ top: 20, right: 20, bottom: 30, left: 40 }}
-            data={chartData}
-          />
-        </div>
-        <OrderBookTable asks={chartData.asks} bids={chartData.bids} />
-      </div>
-    </div>
+    <SocketProvider SOCKET_URL={SOCKET_URL} setChartData={setChartData}>
+      <IdentificationDialog />
+      <Container sx={{ p: 2 }}>
+        <Paper elevation={3} style={{ borderRadius: theme.shape.borderRadius }}>
+          <OrderBookChart data={chartData} />
+          <OrderBookTable asks={chartData.asks} bids={chartData.bids} />
+        </Paper>
+      </Container>
+    </SocketProvider>
   );
-}
+};
 
 export default App;

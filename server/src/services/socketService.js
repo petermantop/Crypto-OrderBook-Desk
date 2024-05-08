@@ -38,7 +38,7 @@ function initializeSocket(server) {
     // Initialize a local state for each client
     let count = 0;
 
-    getOrderMap(1).then((result) => {
+    getOrderMap(2).then((result) => {
       broadcast("initial_map", result);
     });
 
