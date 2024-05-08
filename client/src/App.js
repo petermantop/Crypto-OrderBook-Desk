@@ -1,30 +1,45 @@
-import React, { useState } from "react";
-import { Container, useTheme, Paper } from "@mui/material";
-import { SocketProvider } from "./SocketContext";
-import IdentificationDialog from "./UserDialog";
-import OrderBookChart from "./OrderBookCharts";
-import OrderBookTable from "./OrderBookTable";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import { Container } from "@mui/material";
+import { SocketProvider, useSocket } from "./SocketContext";
+import IdentificationDialog from "./components/UserDialog";
+import OrderBookContainer from "./components/OrderBookContainer";
+import TopBar from "./components/TopBar";
+import LandingComponent from "./components/LandingComponent";
 
 const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || "ws://localhost:4000";
 
-const App = () => {
-  const theme = useTheme();
-  const [chartData, setChartData] = useState({
-    market: "BTC/USDT",
-    bids: [],
-    asks: [],
-  });
+// Create a custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: createTheme().palette.info.main,
+    },
+  },
+});
 
+const AppContainter = () => {
+  const { orderbookData, identified } = useSocket();
   return (
-    <SocketProvider SOCKET_URL={SOCKET_URL} setChartData={setChartData}>
-      <IdentificationDialog />
-      <Container sx={{ p: 2 }}>
-        <Paper elevation={3} style={{ borderRadius: theme.shape.borderRadius }}>
-          <OrderBookChart data={chartData} />
-          <OrderBookTable asks={chartData.asks} bids={chartData.bids} />
-        </Paper>
-      </Container>
-    </SocketProvider>
+    <Container maxWidth="md" component="main" sx={{ pt: 8, pb: 6 }}>
+      {identified ? (
+        <OrderBookContainer data={orderbookData} />
+      ) : (
+        <LandingComponent />
+      )}
+    </Container>
+  );
+};
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <SocketProvider SOCKET_URL={SOCKET_URL}>
+        <IdentificationDialog />
+        <TopBar />
+        <AppContainter />
+      </SocketProvider>
+    </ThemeProvider>
   );
 };
 

@@ -77,7 +77,7 @@ function startTradingGenerator() {
     };
 
     channel.sendToQueue("trades", Buffer.from(JSON.stringify(newTrade)));
-  }, 200); // Generate a new action every 0.5 seconds
+  }, process.env.TRADE_GENERATION_TIME); // Generate a new action every 0.5 seconds
 }
 
 module.exports = { connectRabbitMQ };

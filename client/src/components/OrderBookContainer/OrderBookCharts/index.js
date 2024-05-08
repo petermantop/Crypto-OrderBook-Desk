@@ -24,7 +24,7 @@ const OrderBookChart = ({ data }) => {
   const maxQuantity = max([...bids, ...asks], (d) => d.quantity);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer height={300}>
       <AreaChart
         data={combinedData}
         margin={{ top: 20, right: 30, left: 0, bottom: 0 }}

@@ -8,7 +8,7 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import { useSocket } from "../SocketContext";
+import { useSocket } from "../../SocketContext";
 
 const IdentificationDialog = () => {
   const {
@@ -23,7 +23,6 @@ const IdentificationDialog = () => {
   const handleIdentification = () => {
     if (name.trim()) {
       socket.emit("identify", name);
-      setIdentified(true);
       setAskForIdentification(false);
     }
   };
@@ -38,6 +37,8 @@ const IdentificationDialog = () => {
       <DialogContent>
         <DialogContentText>
           To subscribe to crypto pairs, please enter your name.
+          <br />
+          Default: Alice
         </DialogContentText>
         <TextField
           autoFocus
@@ -53,7 +54,9 @@ const IdentificationDialog = () => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleIdentification}>OK</Button>
+        <Button onClick={handleIdentification} disabled={!name}>
+          OK
+        </Button>
       </DialogActions>
     </Dialog>
   );
