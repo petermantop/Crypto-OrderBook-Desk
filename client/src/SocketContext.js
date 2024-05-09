@@ -110,6 +110,7 @@ export const SocketProvider = ({ children, SOCKET_URL }) => {
 
     localStorage.removeItem("token");
     setIdentified(false);
+    setCryptoPairs([]);
     setUser({});
     window.location.reload();
   };
@@ -122,7 +123,7 @@ export const SocketProvider = ({ children, SOCKET_URL }) => {
   const onOrder = ({ price, quantity, type }) => {
     socket.emit("new_order", {
       pairId: selectedPair,
-      price,
+      price: Math.floor(Number.parseFloat(price) + 0.5),
       quantity,
       type,
     });

@@ -14,14 +14,26 @@ import { max } from "d3-array";
 const OrderBookChart = ({ data }) => {
   const theme = useTheme();
 
-  const bids = data.bids.sort((a, b) => a.price - b.price);
-  const asks = data.asks.sort((a, b) => a.price - b.price);
+  // Create maps for quick lookup
+  const bidMap = new Map(data.bids.map((bid) => [bid.price, bid.quantity]));
+  const askMap = new Map(data.asks.map((ask) => [ask.price, ask.quantity]));
 
-  const combinedData = bids
-    .map((bid) => ({ price: bid.price, bid: bid.quantity }))
-    .concat(asks.map((ask) => ({ price: ask.price, ask: ask.quantity })));
+  // Find all unique prices
+  const allPrices = Array.from(
+    new Set([...bidMap.keys(), ...askMap.keys()])
+  ).sort((a, b) => a - b);
 
-  const maxQuantity = max([...bids, ...asks], (d) => d.quantity);
+  // Combine bids and asks into a single array
+  const combinedData = allPrices.map((price) => ({
+    price,
+    bid: bidMap.has(price) ? bidMap.get(price) : null, // Use null instead of 0
+    ask: askMap.has(price) ? askMap.get(price) : null, // Use null instead of 0
+  }));
+
+  // Calculate maximum quantity for Y-axis scale
+  const maxQuantity = max(combinedData, (d) =>
+    Math.max(d.bid || 0, d.ask || 0)
+  );
 
   return (
     <ResponsiveContainer height={300}>
@@ -84,14 +96,14 @@ const OrderBookChart = ({ data }) => {
           cursor={{ stroke: theme.palette.primary.main, strokeWidth: 2 }}
         />
         <Area
-          type="monotone"
+          type="step"
           dataKey="bid"
           stroke={theme.palette.success.main}
           fillOpacity={1}
           fill="url(#bidGradient)"
         />
         <Area
-          type="monotone"
+          type="step"
           dataKey="ask"
           stroke={theme.palette.error.main}
           fillOpacity={1}

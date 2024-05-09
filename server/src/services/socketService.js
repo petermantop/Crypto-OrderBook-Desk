@@ -53,7 +53,6 @@ function initializeSocket(server) {
         });
         socket.isIdentified = true;
         socket.name = user.name;
-        console.log(user);
         try {
           responseCryptoPairs = await axios.get(
             `${TRADING_PLATFORM_URL}/cryptoPairs`
@@ -104,21 +103,16 @@ function initializeSocket(server) {
 
     // Example of handling a join room request from a client
     socket.on("subscribe", (pairId) => {
-      if (!socket.isIdentified)
-        socket.emit("token_validation_failed", "Please indentify yourself");
       // leave rooms
-      const rooms = socket.rooms;
-      Object.keys(rooms).forEach((room) => {
-        // The socket's own room has the same name as its ID
-        if (room.toString() !== socket.id.toString()) {
-          socket.leave(room);
+      for (let i = 1; i <= 5; i++) {
+        if (i.toString() != pairId.toString()) {
+          socket.leave(i);
         }
-      });
-
-      console.log(pairId, rooms);
+      }
 
       // join new room
       socket.join(pairId);
+
       logger.info(`Client ${socket.id} joined room: CRYPTO_PAIR-${pairId}`);
       getOrderMap(pairId).then((result) => {
         socket.emit("initial_map", result);
@@ -133,7 +127,7 @@ function initializeSocket(server) {
     });
   });
 
-  console.log("Socket.IO initialized and ready for connections.");
+  logger.info("Socket.IO initialized and ready for connections.");
 }
 
 // Function to broadcast a message to all clients

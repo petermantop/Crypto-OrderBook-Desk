@@ -18,7 +18,7 @@ export default function SelectCyptoPair() {
       setSelectedPair(cryptoPairs[0].id);
       onPairChange(cryptoPairs[0].id);
     }
-  }, [cryptoPairs, identified]);
+  }, [cryptoPairs]);
 
   const handleSubscribe = () => {
     if (onPairChange) {

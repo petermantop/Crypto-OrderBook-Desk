@@ -70,7 +70,6 @@ function startOrderGenerator() {
       delete newOrder.quantity;
       delete newOrder.pairId;
     }
-    console.log(newOrder);
     channel.sendToQueue("orders", Buffer.from(JSON.stringify(newOrder)));
   }, process.env.ORDERBOOK_GENERATION_TIME); // Generate a new action every 0.3 seconds
 }
