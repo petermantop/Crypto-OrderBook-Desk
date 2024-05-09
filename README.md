@@ -52,3 +52,15 @@ The application uses Socket.io to establish a real-time, bi-directional communic
 - Redis Integration: To improve response times and scalability by caching frequently accessed data.
 - Enhanced Security: Implementing authentication and authorization mechanisms to secure user sessions and validate actions.
 - Robust Error Handling: Developing more comprehensive error handling and recovery mechanisms to ensure the application remains stable and responsive under varying conditions.
+
+# ScreenShots
+
+![Overview](screenshots/Screenshot_1.png "Order book charts and table")
+
+![Overview](screenshots/Screenshot_2.png "Crypto Pair Select")
+
+![Overview](screenshots/Screenshot_3.png)
+
+![Overview](screenshots/Screenshot_4.png)
+
+![Overview](screenshots/Screenshot_5.png)
