@@ -7,7 +7,7 @@ function updateOrderBookWithNewOrder(state, newData) {
     return;
   }
   let orderBookType = newData.type; // "bids" or "asks"
-  let existingOrders = state[orderBookType];
+  let existingOrders = newState[orderBookType];
   let orderIndex = existingOrders.findIndex(
     (order) => order.price === newData.price
   );

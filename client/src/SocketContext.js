@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { SnackbarProvider, VariantType, useSnackbar } from "notistack";
 import { updateOrderBookWithNewOrder, updateOrderBookWithTrade } from "./utils";
 
 import io from "socket.io-client";
@@ -8,18 +9,21 @@ const SocketContext = createContext();
 export const useSocket = () => useContext(SocketContext);
 
 export const SocketProvider = ({ children, SOCKET_URL }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [socket, setSocket] = useState(null);
   const [user, setUser] = useState({
     id: null,
     name: "",
   });
+  const [selectedPair, setSelectedPair] = useState(-1);
+  const [cryptoPairs, setCryptoPairs] = useState([]);
   const [orderbookData, setOrderbookData] = useState({
-    market: "BTC/USDT",
     bids: [],
     asks: [],
+    dataLoaded: false,
   });
-
-  const [identified, setIdentified] = useState(false);
-  const [socket, setSocket] = useState(null);
+  const [identified, setIdentified] = useState(!!localStorage.getItem("token"));
   const [askForIdentification, setAskForIdentification] = useState(false);
 
   useEffect(() => {
@@ -31,17 +35,30 @@ export const SocketProvider = ({ children, SOCKET_URL }) => {
     });
 
     newSocket.on("trade", (message) => {
+      const { quantity, price, timeStamp } = message;
+
+      const formattedTime = new Date(timeStamp).toLocaleString("en-US", {
+        hour12: true,
+      });
+      const notification = `Trade executed: ${quantity.toFixed(
+        2
+      )} units at $${price}. [${formattedTime}]`;
+      enqueueSnackbar(notification, { variant: "info" });
+
       setOrderbookData((data) => updateOrderBookWithTrade(data, message));
     });
 
     newSocket.on("initial_map", ({ bids, asks }) => {
-      setOrderbookData((data) => ({ ...data, bids, asks }));
+      setOrderbookData((data) => ({ ...data, bids, asks, dataLoaded: true }));
     });
 
-    newSocket.on("identified", ({ token, user }) => {
+    newSocket.on("identified", ({ token, user, cryptoPairs }) => {
       setIdentified(true);
       localStorage.setItem("token", token);
+
       setUser({ id: user.id, name: user.name });
+      setCryptoPairs(cryptoPairs);
+      enqueueSnackbar(`Welcome! ${user.name}`, { variant: "info" });
     });
 
     newSocket.on("identify_now", () => {
@@ -55,10 +72,21 @@ export const SocketProvider = ({ children, SOCKET_URL }) => {
       }
     });
 
-    newSocket.on("token_validation_failed", () => {
+    newSocket.on("token_validation_failed", (message) => {
       localStorage.removeItem("token");
+      enqueueSnackbar(`Token Identification Failed: ${message}`, {
+        variant: "warning",
+      });
 
+      setIdentified(false);
       setAskForIdentification(true);
+    });
+
+    newSocket.on("identification_error", (message) => {
+      localStorage.removeItem("token");
+      enqueueSnackbar(`Identification Failed: ${message}`, {
+        variant: "warning",
+      });
     });
 
     newSocket.connect();
@@ -83,11 +111,29 @@ export const SocketProvider = ({ children, SOCKET_URL }) => {
     localStorage.removeItem("token");
     setIdentified(false);
     setUser({});
+    window.location.reload();
+  };
+
+  const onPairChange = (pairId) => {
+    setSelectedPair(pairId);
+    socket.emit("subscribe", pairId);
+  };
+
+  const onOrder = ({ price, quantity, type }) => {
+    socket.emit("new_order", {
+      pairId: selectedPair,
+      price,
+      quantity,
+      type,
+    });
   };
 
   const value = {
     socket,
     user,
+    onOrder,
+    onPairChange,
+    cryptoPairs,
     orderbookData,
     setOrderbookData,
     identified,

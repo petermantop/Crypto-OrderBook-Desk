@@ -14,7 +14,11 @@ const calculateTotals = (data) => {
   let runningTotal = 0;
   return data.map((item) => {
     runningTotal += item.quantity * item.price;
-    return { ...item, total: runningTotal };
+    return {
+      ...item,
+      quantity: item.quantity.toFixed(2),
+      total: runningTotal.toFixed(2),
+    };
   });
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MenuItem,
   Select,
@@ -7,12 +7,18 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import { useSocket } from "../../SocketContext";
 
-export default function SelectCyptoPair({
-  cryptoPairs = [{ id: 1, symbol: "BIT-USDT" }],
-  onPairChange,
-}) {
-  const [selectedPair, setSelectedPair] = useState(cryptoPairs[0].id); // Default to the first pair
+export default function SelectCyptoPair() {
+  const { cryptoPairs, onPairChange, identified } = useSocket();
+  const [selectedPair, setSelectedPair] = useState(-1); // Default to the first pair
+
+  useEffect(() => {
+    if (cryptoPairs[0]) {
+      setSelectedPair(cryptoPairs[0].id);
+      onPairChange(cryptoPairs[0].id);
+    }
+  }, [cryptoPairs, identified]);
 
   const handleSubscribe = () => {
     if (onPairChange) {
@@ -46,14 +52,14 @@ export default function SelectCyptoPair({
         >
           {cryptoPairs.map((pair) => (
             <MenuItem key={pair.id} value={pair.id}>
-              {pair.symbol}
+              {pair.pair}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      <Button variant="contained" color="primary" onClick={handleSubscribe}>
+      {/* <Button variant="contained" color="primary" onClick={handleSubscribe}>
         Subscribe
-      </Button>
+      </Button> */}
     </Box>
   );
 }
