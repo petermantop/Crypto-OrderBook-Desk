@@ -68,7 +68,7 @@ function generatePriceQuantity(pairId, type) {
 
   return {
     price: parseFloat(price.toFixed(0)), // No need to round since prices are integers
-    quantity: Math.floor(Math.random() * 1 + 1), // Ensuring at least one unit sold
+    quantity: Math.random() * 3 + 1, // Ensuring at least one unit sold
   };
 }
 module.exports = {

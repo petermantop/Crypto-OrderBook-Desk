@@ -10,6 +10,7 @@ const { TRADING_PLATFORM_URL } = require("../../config");
 const JWT_SECRET = process.env.JWT_SECRET || "SECRET";
 
 const mockUsers = require("../users.mock");
+const { generateNewOrder } = require("./messageService");
 
 // Initialize socketIO instance as null to later assign actual Socket.IO server instance
 let ioInstance = null;
@@ -43,11 +44,7 @@ function initializeSocket(server) {
     // ask client to identify
     socket.emit("identify_now");
 
-    getOrderMap(2).then((result) => {
-      broadcast("initial_map", result);
-    });
-
-    socket.on("identify", (name) => {
+    socket.on("identify", async (name) => {
       const user = mockUsers.find((user) => user.name === name);
 
       if (user) {
@@ -56,7 +53,16 @@ function initializeSocket(server) {
         });
         socket.isIdentified = true;
         socket.name = user.name;
-        socket.emit("identified", { token, user });
+        console.log(user);
+        try {
+          responseCryptoPairs = await axios.get(
+            `${TRADING_PLATFORM_URL}/cryptoPairs`
+          );
+          cryptoPairs = responseCryptoPairs.data;
+          socket.emit("identified", { token, user, cryptoPairs });
+        } catch (error) {
+          logger.error(error.message);
+        }
       } else {
         socket.emit("identification_error", "User not found");
       }
@@ -64,14 +70,32 @@ function initializeSocket(server) {
 
     socket.on("signout", () => {
       socket.isIdentified = false;
+
+      // leave rooms
+      const rooms = socket.rooms;
+      Object.keys(rooms).forEach((room) => {
+        // The socket's own room has the same name as its ID
+        if (room.toString() !== socket.id.toString()) {
+          socket.leave(room);
+        }
+      });
     });
 
-    socket.on("validate_token", (token) => {
+    socket.on("validate_token", async (token) => {
       try {
         const decoded = jwt.verify(token, JWT_SECRET);
         socket.isIdentified = true;
         socket.name = decoded.name;
-        socket.emit("identified", { token, user: decoded });
+
+        try {
+          responseCryptoPairs = await axios.get(
+            `${TRADING_PLATFORM_URL}/cryptoPairs`
+          );
+          cryptoPairs = responseCryptoPairs.data;
+          socket.emit("identified", { token, user: decoded, cryptoPairs });
+        } catch (error) {
+          logger.error(error.message);
+        }
       } catch (error) {
         socket.isIdentified = false;
         socket.emit("token_validation_failed", "Invalid or expired token");
@@ -79,10 +103,33 @@ function initializeSocket(server) {
     });
 
     // Example of handling a join room request from a client
-    socket.on("join room", (roomName) => {
-      socket.join(roomName);
-      console.log(`Client ${socket.id} joined room: ${roomName}`);
-      socket.emit("joined room", roomName); // Acknowledge the joining
+    socket.on("subscribe", (pairId) => {
+      if (!socket.isIdentified)
+        socket.emit("token_validation_failed", "Please indentify yourself");
+      // leave rooms
+      const rooms = socket.rooms;
+      Object.keys(rooms).forEach((room) => {
+        // The socket's own room has the same name as its ID
+        if (room.toString() !== socket.id.toString()) {
+          socket.leave(room);
+        }
+      });
+
+      console.log(pairId, rooms);
+
+      // join new room
+      socket.join(pairId);
+      logger.info(`Client ${socket.id} joined room: CRYPTO_PAIR-${pairId}`);
+      getOrderMap(pairId).then((result) => {
+        socket.emit("initial_map", result);
+      });
+    });
+
+    socket.on("new_order", (order) => {
+      if (!socket.isIdentified)
+        socket.emit("token_validation_failed", "Please indentify yourself");
+
+      generateNewOrder(order);
     });
   });
 
@@ -94,16 +141,16 @@ function broadcast(event, message) {
   if (ioInstance) {
     ioInstance.emit(event, message);
   } else {
-    console.error("Socket.IO is not initialized.");
+    logger.error("Socket.IO is not initialized.");
   }
 }
 
 // Function to broadcast a message to a specific room
-function broadcastToRoom(roomName, message) {
+function broadcastToRoom(roomName, event, message) {
   if (ioInstance) {
-    ioInstance.to(roomName).emit("room broadcast", message);
+    ioInstance.to(roomName).emit(event, message);
   } else {
-    console.error("Socket.IO is not initialized.");
+    logger.error("Socket.IO is not initialized.");
   }
 }
 

@@ -1,6 +1,6 @@
 const axios = require("axios");
 const logger = require("../utils/logger");
-const { broadcast } = require("./socketService");
+const { broadcast, broadcastToRoom } = require("./socketService");
 
 const { TRADING_PLATFORM_URL } = require("../../config");
 const { ORDER_TYPES, ORDER_ACTION_TYPES } = require("../../const");
@@ -14,12 +14,14 @@ if (!shouldSendRequestToMock) {
 
 async function processOrderMessage(message) {
   // Implement your logic to process the message here
-  logger.info(
-    `New order message accepted: TYPE: ${message.actionType} --- ID: ${message.id}`
-  );
+  // logger.info(
+  //   `New order message accepted: TYPE: ${message.actionType} --- ID: ${message.id}`
+  // );
 
-  if (message.actionType === ORDER_ACTION_TYPES.NEW)
-    broadcast("orderbook_new", message);
+  if (message.actionType === ORDER_ACTION_TYPES.NEW) {
+    // broadcast("orderbook_new", message);
+    broadcastToRoom(message.pairId, "orderbook_new", message);
+  }
 
   if (!shouldSendRequestToMock) {
     return;
@@ -74,7 +76,7 @@ async function processOrderMessage(message) {
 async function processTradeMessage(message) {
   // Implement your logic to process the message here
   logger.info(`New trading message accepted: ${message.id}`);
-  broadcast("trade", message);
+  broadcastToRoom(message.pairId, "trade", message);
 
   if (!shouldSendRequestToMock) {
     return;
